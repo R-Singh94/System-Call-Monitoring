@@ -1,0 +1,32 @@
+The project is based on sub-section 2 of Part 2 of this assignment. (LOGGER EXTENSION)
+
+To compile the files:
+    `make`
+To clean folder:
+    `make clean`
+    Removes all the binary files and log files as well
+To Run:
+    ./monitor <PROGRAM-NAME> [<OPTIONS> <FILENAME>]
+    Example:
+    ./monitor ls -l /usr/bin
+    ./monitor gedit <FILENAME>
+    ./monitor vim <FILENAME>
+    ./monitor nano <FILENAME>
+    ./monitor libreoffice <FILENAME>
+    ./monitor firefox
+    ./monitor wget https://www.cs.stonybrook.edu
+
+    Exception: Only the ping command required sudo permissions as it needs to create a raw network socket that requires privileged access as it invokes the setuid command
+
+    sudo ./monitor ping -c5 www.cs.stonybrook.edu
+
+Output:
+    - The log files will be placed in the directory ./logs
+    - All log files generated are CSV files and can be viewed on a Spreadsheet
+    - There will be 2 log files generated for each program monitored.
+        - A log file to monitor all file accessess. It mentions the file path, the number of bytes read and number of bytes written.
+          The memory operations are also logged here. All (mmap, dup) accesses along with the page address will be shown in the log file.
+          The memeory read and write operations are also logged here. These operations are linked to a file.
+        - A log file to monitor all network accesses. It mentions the socket descriptor, IP_V4 address and port. If there is an access to an IP_v6 address,
+          it will be logged as well.(Else those entries are blank. If there is no port identified it is logged as -1) There are two types of read and write operations logged. 
+          One set of read and write correspond to bytes read and written using socket operations(sendmsg, recvmsg, send, recv). The other set of read and write operations, involve the normal read and write system calls.
