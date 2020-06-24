@@ -12,5 +12,4 @@ TEST:
     ../pin-3.13/pin -t bin/stacktrace.so -- gedit
 
 RESULTS:
-    I have only implemented the portion that checks the stack usage. I was not able to work on preventing ROP attacks or detect stack pivoting.
-    The application measures the stack usage for multi-threaded applications as well
+    I have only implemented the portion that checks the stack usage. The application measures the stack usage for multi-threaded applications as well
